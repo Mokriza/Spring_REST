@@ -24,7 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
-
     // Настраиваем UserDetailsService аутентификацию
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -49,12 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .permitAll();
     }
-
-//    @Override
-//    protected void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.csrf().disable().
-//                authorizeRequests().antMatchers("/").permitAll();
-//    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
