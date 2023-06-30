@@ -16,6 +16,6 @@ async function drawUserTable() {
         <td>${age}</td>
         <td>${email}</td>
         <td>${username}</td>
-        <td>${roles.map(({name}) => name)}</td>
+        <td>${roles.map(({name}) => name.substring(5))}</td>
       </tr>`);
 }
