@@ -29,7 +29,7 @@ async function drawAdminTable() {
         <td>${age}</td>
         <td>${email}</td>
         <td>${username}</td>
-        <td>${roles.map(({name}) => name)}</td>
+        <td>${roles.map(({name}) => name.substring(5))}</td>
         <td><button type="button" class="btn btn-primary" onclick="openModalHandler(${action.update}, ${id})">Edit</button></td>
         <td><button type="button" class="btn btn-danger" onclick="openModalHandler(${action.delete}, ${id})">Delete</button></td>
         </tr>`)
@@ -41,7 +41,7 @@ async function newUser() {
     const createUserRolesField = $("#createRoles");
     createUserRolesField.prop('disabled', false).empty();
     roles.forEach(({id, name}) => {
-        createUserRolesField.append(`<option value="${id}">${name}</option>`);
+        createUserRolesField.append(`<option value="${id}">${name.substring(5)}</option>`);
     });
 
     const form = document.forms["createForm"];
@@ -100,7 +100,7 @@ async function openModalHandler(actionId, userId = null) {
 
     rolesField.prop('disabled', false).empty();
     roles.forEach(({id, name}) => {
-        rolesField.append(`<option value="${id}">${name}</option>`);
+        rolesField.append(`<option value="${id}">${name.substring(5)}</option>`);
     });
 
     const {id, name, surname, age, username, email, password} = await getUser(userId);

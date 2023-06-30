@@ -28,7 +28,10 @@
     <div class="container-fluid bg-dark text-white">
                 <span class="navbar-brand mb-0 h1">
                     <h4><span sec:authentication="name"></span> with roles <span
-                            sec:authentication="principal.authorities"></span></h4>
+                            th:each="authority : ${#authentication.getAuthorities()}"
+                            th:if="${authority.getAuthority().startsWith('ROLE_')}"
+                            th:text="${authority.getAuthority().replaceFirst('ROLE_', ' ')}">
+    </span></h4>
                 </span>
     </div>
 
